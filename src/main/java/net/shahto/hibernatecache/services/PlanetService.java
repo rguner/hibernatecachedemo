@@ -36,4 +36,15 @@ public class PlanetService {
         log.debug("4. query planet # {} from first level cache", id);
         return planetRepository.findById(id);
     }
+
+    public Planet updatePlanet(Planet planet) {
+        Optional<Planet> existingPlanetOptional = planetRepository.findById(planet.getId());
+        if (existingPlanetOptional.isPresent()) {
+            Planet existingPlanet = existingPlanetOptional.get();
+            existingPlanet.setName(existingPlanet.getName() + " updated");
+            return planetRepository.save(existingPlanet);
+        } else {
+            throw new RuntimeException("Planet Not Found with Id " + planet.getId());
+        }
+    }
 }
