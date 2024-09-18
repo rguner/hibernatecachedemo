@@ -1,5 +1,6 @@
 package net.shahto.hibernatecache.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,7 +14,8 @@ public class Moon {
     private long id;
 
     @ManyToOne
-    @JoinColumn(name="planet_id", nullable=false)
+    @JoinColumn(name = "planet_id", nullable = false)
+    @JsonIgnore //infinite recursion when Jacson serializing entity into JSON
     private Planet planet;
 
     private String name;
@@ -24,7 +26,7 @@ public class Moon {
     public String toString() {
         return "Moon{" +
                 "id=" + id +
-                ", planet=" + planet.getName() +
+                ", planet=" + //planet.getName() +
                 ", name='" + name + '\'' +
                 ", diameter=" + diameter +
                 '}';

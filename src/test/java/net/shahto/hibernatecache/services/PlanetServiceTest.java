@@ -14,10 +14,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Slf4j
 @SpringBootTest
-class SolarSystemServiceTest {
+class PlanetServiceTest {
 
     @Autowired
-    SolarSystemService planetService;
+    PlanetService planetService;
 
     private Planet readPlanet(long id) {
         log.info(String.format("query planet #%d", id));
