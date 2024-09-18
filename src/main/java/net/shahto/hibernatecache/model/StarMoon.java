@@ -19,7 +19,7 @@ public class StarMoon {
 
     @ManyToOne
     @JoinColumn(name = "star_id", nullable = false)
-    @JsonIgnore //infinite recursion when Jacson serializing entity into JSON
+    @JsonIgnore //infinite recursion when Jackson serializing entity into JSON
     private Star star;
 
     private String name;
