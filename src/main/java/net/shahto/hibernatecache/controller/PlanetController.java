@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,6 +35,12 @@ public class PlanetController {
         Optional<Planet> planetOptional = planetService.getPlanetById(planetId);
         return planetOptional.map(planet -> new ResponseEntity<>(planet, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @GetMapping("/getSpringCachedPlanetById/{id}")
+    public ResponseEntity<Planet> getSpringCachedPlanetById(@PathVariable("id") Long planetId) {
+        Planet planet = planetService.getSpringCachedPlanetById(planetId);
+        return new ResponseEntity<>(planet, HttpStatus.OK);
     }
 
     // http://localhost:8080/api/planets

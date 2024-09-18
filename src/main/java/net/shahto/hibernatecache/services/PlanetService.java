@@ -5,9 +5,11 @@ import lombok.extern.slf4j.Slf4j;
 import net.shahto.hibernatecache.model.Planet;
 import net.shahto.hibernatecache.repositories.PlanetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -46,5 +48,11 @@ public class PlanetService {
         } else {
             throw new RuntimeException("Planet Not Found with Id " + planet.getId());
         }
+    }
+
+    @Cacheable(value = "springCache", key = "#id", unless = "#result == null")
+    public Planet getSpringCachedPlanetById(Long id) {
+
+       return planetRepository.findById(id).orElseThrow(() -> new RuntimeException("Planet Not Found with Id " + id));
     }
 }
