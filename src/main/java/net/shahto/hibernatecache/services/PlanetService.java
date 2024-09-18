@@ -1,6 +1,7 @@
 package net.shahto.hibernatecache.services;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import net.shahto.hibernatecache.model.Planet;
 import net.shahto.hibernatecache.repositories.PlanetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class PlanetService {
 
     private final PlanetRepository planetRepository;
@@ -24,6 +26,14 @@ public class PlanetService {
     }
 
     public Optional<Planet> getPlanetById(long id) {
+        log.debug("1. query planet # {} from database or cache", id);
+        planetRepository.findById(id);
+        log.debug("2. query planet # {} from database or cache", id);
+        planetRepository.findById(id);
+        log.debug("3. query planet # {} from database or cache", id);
+        planetRepository.findById(id);
+
+
         return planetRepository.findById(id);
     }
 }

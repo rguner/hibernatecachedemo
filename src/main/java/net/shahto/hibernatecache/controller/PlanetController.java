@@ -29,7 +29,7 @@ public class PlanetController {
         return new ResponseEntity<>(savedPlanet, HttpStatus.CREATED);
     }
 
-    // http://localhost:8080/api/Planets/1
+    // http://localhost:8080/api/olanets/1
     @GetMapping("{id}")
     public ResponseEntity<Planet> getPlanetById(@PathVariable("id") Long planetId) {
         Optional<Planet> planetOptional = planetService.getPlanetById(planetId);
