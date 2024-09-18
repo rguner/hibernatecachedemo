@@ -24,13 +24,15 @@ public class CacheController {
     private EntityManager entityManager;
 
     // http://localhost:8080/api/cache
-    @GetMapping
-    public ResponseEntity<Void> getCaches() {
+    @GetMapping("/clearCaches")
+    public ResponseEntity<Void> clearCaches() {
         cacheManager.getCacheNames().forEach(cacheName -> {
             log.debug("cacheName = {}",cacheName);
             log.debug("cache = {}", cacheManager.getCache(cacheName));
+            cacheManager.getCache(cacheName).clear();
         });
 
+        // second level cache evict
         SessionFactory sessionFactory = entityManager.getEntityManagerFactory().unwrap(SessionFactory.class);
         sessionFactory.getCache().evictAllRegions();
         log.debug("Second Level Cache evicted successfully");
