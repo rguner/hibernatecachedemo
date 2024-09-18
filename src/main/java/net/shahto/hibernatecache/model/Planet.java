@@ -18,11 +18,17 @@ import java.util.Set;
 public class Planet {
     @Id
     private long id;
+
     private String name;
+
     private String type;
+
     private float mass;
+
     private int diameter;
+
     private float distance;
+
     @OneToMany(mappedBy="planet", cascade=CascadeType.ALL)
     private Set<Moon> moons;
 }

@@ -11,10 +11,13 @@ import lombok.Setter;
 public class Moon {
     @Id
     private long id;
+
     @ManyToOne
     @JoinColumn(name="planet_id", nullable=false)
     private Planet planet;
+
     private String name;
+
     private int diameter;
 
     @Override
