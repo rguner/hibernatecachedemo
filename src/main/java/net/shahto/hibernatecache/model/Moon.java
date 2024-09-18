@@ -25,7 +25,6 @@ public class Moon {
 
     private int diameter;
 
-    /*
     @Override
     public String toString() {
         return "Moon{" +
@@ -35,6 +34,4 @@ public class Moon {
                 ", diameter=" + diameter +
                 '}';
     }
-
-     */
 }
