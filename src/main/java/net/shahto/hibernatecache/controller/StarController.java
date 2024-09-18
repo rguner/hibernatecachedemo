@@ -36,6 +36,15 @@ public class StarController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    @GetMapping("/getStarByIdFromMultipleServiceCall/{id}")
+    public ResponseEntity<Star> getStarByIdFromMultipleServiceCall(@PathVariable("id") Long starId) {
+        starService.getStarByIdForMultipleCall(starId);
+        starService.getStarByIdForMultipleCall(starId);
+        Optional<Star> starOptional = starService.getStarByIdForMultipleCall(starId);
+        return starOptional.map(star -> new ResponseEntity<>(star, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
     // http://localhost:8080/api/stars
     @GetMapping
     public ResponseEntity<List<Star>> getAllStars() {

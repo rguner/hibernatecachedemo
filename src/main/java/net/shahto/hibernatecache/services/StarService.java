@@ -36,4 +36,9 @@ public class StarService {
         log.debug("4. query star # {} from first level cache", id);
         return starRepository.findById(id);
     }
+
+    public Optional<Star> getStarByIdForMultipleCall(long id) {
+        log.debug("1. query star # {} from database", id);
+        return starRepository.findById(id);
+    }
 }
