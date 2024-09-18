@@ -28,3 +28,8 @@ INSERT INTO moons (id, planet_id, name, diameter) VALUES (19, 7, 'Titania', 1577
 INSERT INTO moons (id, planet_id, name, diameter) VALUES (20, 7, 'Oberon', 1522);
 INSERT INTO moons (id, planet_id, name, diameter) VALUES (21, 8, 'Triton', 2707);
 INSERT INTO moons (id, planet_id, name, diameter) VALUES (22, 8, 'Nereid', 340);
+
+INSERT INTO stars (id, name, type, mass, diameter, distance) VALUES (1, 'Güneş', 'Parlak', 0.33011, 4879, 0.39);
+INSERT INTO stars (id, name, type, mass, diameter, distance) VALUES (2, 'Kutup', 'Uzak', 4.8675, 12104, 0.72);
+INSERT INTO star_moons (id, star_id, name, diameter) VALUES (1, 1, 'Moon-Güneş', 3474);
+INSERT INTO star_moons (id, star_id, name, diameter) VALUES (2, 2, 'Phobos-Kutup', 22);

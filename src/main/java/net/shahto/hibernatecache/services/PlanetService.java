@@ -26,14 +26,14 @@ public class PlanetService {
     }
 
     public Optional<Planet> getPlanetById(long id) {
-        log.debug("1. query planet # {} from database or cache", id);
+        log.debug("__________________________________________________________________________________________________");
+        log.debug("1. query planet # {} from database or second cache", id);
         planetRepository.findById(id);
-        log.debug("2. query planet # {} from database or cache", id);
+        log.debug("2. query planet # {} from first level cache", id);
         planetRepository.findById(id);
-        log.debug("3. query planet # {} from database or cache", id);
+        log.debug("3. query planet # {} from first level cache", id);
         planetRepository.findById(id);
-
-
+        log.debug("4. query planet # {} from first level cache", id);
         return planetRepository.findById(id);
     }
 }
