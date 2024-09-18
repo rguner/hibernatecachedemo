@@ -42,10 +42,21 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.redisson</groupId>
-			<artifactId>redisson-hibernate-53</artifactId>
-			<version>3.36.0</version>
+			<groupId>org.hibernate.orm</groupId>
+			<artifactId>hibernate-jcache</artifactId>
+			<version>6.6.0.Final</version>
 		</dependency>
+		<dependency>
+			<groupId>com.github.ben-manes.caffeine</groupId>
+			<artifactId>caffeine</artifactId>
+			<version>3.1.8</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.ben-manes.caffeine</groupId>
+			<artifactId>jcache</artifactId>
+			<version>3.1.8</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
