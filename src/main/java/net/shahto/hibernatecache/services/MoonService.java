@@ -39,4 +39,8 @@ public class MoonService {
         log.debug("4. query Moon # {} from first level cache", id);
         return moonRepository.findById(id);
     }
+
+    public Optional<Moon> getMoonByName(String name) {
+        return moonRepository.findByNameIs(name);
+    }
 }

@@ -28,6 +28,14 @@ public class MoonController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    // http://localhost:8080/api/getMoonByName/Moon
+    @GetMapping("/getMoonByName/{name}")
+    public ResponseEntity<Moon> getMoonByName(@PathVariable("name") String name) {
+        Optional<Moon> moonOptional = moonService.getMoonByName(name);
+        return moonOptional.map(moon -> new ResponseEntity<>(moon, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
     // http://localhost:8080/api/moons
     @GetMapping
     public ResponseEntity<List<Moon>> getAllMoons() {
