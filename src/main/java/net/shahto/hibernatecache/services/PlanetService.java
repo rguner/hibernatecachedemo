@@ -50,6 +50,10 @@ public class PlanetService {
         }
     }
 
+    public Optional<Planet> getPlanetByName(String name) {
+        return planetRepository.findByNameIs(name);
+    }
+
     @Cacheable(value = "springCache", key = "#id", unless = "#result == null")
     public Planet getSpringCachedPlanetById(Long id) {
 

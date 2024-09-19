@@ -1,6 +1,7 @@
 package net.shahto.hibernatecache.controller;
 
 import lombok.AllArgsConstructor;
+import net.shahto.hibernatecache.model.Moon;
 import net.shahto.hibernatecache.model.Planet;
 import net.shahto.hibernatecache.services.PlanetService;
 import org.springframework.http.HttpStatus;
@@ -41,6 +42,13 @@ public class PlanetController {
     public ResponseEntity<Planet> getSpringCachedPlanetById(@PathVariable("id") Long planetId) {
         Planet planet = planetService.getSpringCachedPlanetById(planetId);
         return new ResponseEntity<>(planet, HttpStatus.OK);
+    }
+
+    @GetMapping("/getPlanetByName/{name}")
+    public ResponseEntity<Planet> getPlanetByName(@PathVariable("name") String name) {
+        Optional<Planet> planetOptional = planetService.getPlanetByName(name);
+        return planetOptional.map(planet -> new ResponseEntity<>(planet, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     // http://localhost:8080/api/planets
