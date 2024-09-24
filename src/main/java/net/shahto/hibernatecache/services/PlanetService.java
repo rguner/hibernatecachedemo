@@ -50,6 +50,17 @@ public class PlanetService {
         }
     }
 
+    public Planet updatePlanetByName(String name) {
+        Optional<Planet> existingPlanetOptional = getPlanetByName(name);
+        if (existingPlanetOptional.isPresent()) {
+            Planet existingPlanet = existingPlanetOptional.get();
+            existingPlanet.setName(existingPlanet.getName() + " updated");
+            return planetRepository.save(existingPlanet);
+        } else {
+            throw new RuntimeException("Planet Not Found with Name " + name);
+        }
+    }
+
     public Optional<Planet> getPlanetByName(String name) {
         return planetRepository.findByNameIs(name);
     }

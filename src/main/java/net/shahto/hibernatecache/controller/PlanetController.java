@@ -66,4 +66,10 @@ public class PlanetController {
         return new ResponseEntity<>(updatedPlanet, HttpStatus.OK);
     }
 
+    @GetMapping("/updatePlanetByName/{name}")
+    public ResponseEntity<Planet> updatePlanetByName(@PathVariable("name") String name){
+        Planet updatedPlanet = planetService.updatePlanetByName(name);
+        return new ResponseEntity<>(updatedPlanet, HttpStatus.OK);
+    }
+
 }
